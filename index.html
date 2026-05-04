@@ -3,102 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BaricBoost.com - Hyperbaric Oxygen Therapy Research and News</title>
-    <meta name="description" content="BaricBoost.com covers the latest research, clinical trials, and news on hyperbaric oxygen therapy (HBOT) for neurological conditions, wound healing, sports recovery, and more.">
+    <title>BaricBoost.com - Hyperbaric Oxygen Therapy Research, News, and Guides</title>
+    <meta name="description" content="BaricBoost.com is the go-to resource for hyperbaric oxygen therapy (HBOT). Research news, condition guides, chamber comparisons, insurance coverage, and clinical evidence.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://leefti.github.io/baricboost-site/">
-    <meta property="og:title" content="BaricBoost.com - Hyperbaric Oxygen Therapy Research and News">
-    <meta property="og:description" content="Evidence-based coverage of HBOT research, clinical applications, and emerging therapeutic uses.">
+    <meta property="og:title" content="BaricBoost.com - Your HBOT Knowledge Hub">
+    <meta property="og:description" content="Research, guides, and news on hyperbaric oxygen therapy for health and recovery.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://leefti.github.io/baricboost-site/">
     <style>
+        :root {
+            --primary: #023e8a;
+            --accent: #00b4d8;
+            --accent-light: #caf0f8;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #f0f9ff;
+            --card-bg: #ffffff;
+            --border: #bae6fd;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: #1a1a1a;
-            line-height: 1.7;
-            background: #fafafa;
-        }
-        header {
-            background: linear-gradient(135deg, #0077b6, #00b4d8);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        header h1 { font-size: 2.4rem; margin-bottom: 12px; }
-        header p { font-size: 1.15rem; opacity: 0.9; max-width: 620px; margin: 0 auto; }
-        main { max-width: 780px; margin: 0 auto; padding: 40px 20px 60px; }
-        h2 { font-size: 1.5rem; margin: 36px 0 16px; color: #0077b6; }
-        h3 { font-size: 1.2rem; margin: 24px 0 10px; color: #023e8a; }
-        p { margin-bottom: 16px; color: #333; }
-        ul { margin: 0 0 20px 24px; }
-        li { margin-bottom: 8px; color: #333; }
-        a { color: #0077b6; text-decoration: none; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); line-height: 1.7; background: var(--bg); }
+        a { color: var(--primary); text-decoration: none; font-weight: 500; }
         a:hover { text-decoration: underline; }
-        .cta {
-            background: linear-gradient(135deg, #0077b6, #00b4d8);
+
+        .hero {
+            background: linear-gradient(135deg, #023e8a 0%, #0077b6 50%, #00b4d8 100%);
+            color: white;
+            padding: 80px 24px 60px;
+            text-align: center;
+        }
+        .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); color: var(--accent-light); font-size: 0.8rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
+        .hero p { font-size: 1.15rem; opacity: 0.85; max-width: 580px; margin: 0 auto; }
+
+        .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 48px 0; }
+        .section-title { font-size: 1.6rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .section-sub { color: var(--text-light); margin-bottom: 28px; }
+
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .card:hover { box-shadow: 0 4px 20px rgba(0,119,182,0.12); transform: translateY(-2px); }
+        .card h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
+        .card a { font-size: 0.85rem; color: var(--primary); font-weight: 600; }
+
+        .content-block { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-bottom: 24px; }
+        .content-block h2 { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+        .content-block p { margin-bottom: 14px; }
+        .content-block ul { margin: 0 0 16px 20px; }
+        .content-block li { margin-bottom: 6px; font-size: 0.95rem; }
+
+        .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 20px 0; }
+        .link-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; font-size: 0.9rem; }
+        .link-item a { font-weight: 600; }
+
+        .cta-banner {
+            background: linear-gradient(135deg, #023e8a, #0077b6);
             color: white;
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
-            border-radius: 8px;
+            padding: 48px 24px;
+            border-radius: 16px;
+            margin: 32px 0;
         }
-        .cta a { color: #caf0f8; font-size: 1.2rem; font-weight: 600; }
-        footer { text-align: center; padding: 30px; color: #888; font-size: 0.85rem; }
+        .cta-banner h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; }
+        .cta-banner p { opacity: 0.8; margin-bottom: 20px; }
+        .cta-btn { display: inline-block; background: var(--accent); color: white; font-weight: 700; padding: 14px 32px; border-radius: 8px; font-size: 1rem; text-decoration: none; }
+        .cta-btn:hover { background: #0096c7; text-decoration: none; }
+
+        footer { text-align: center; padding: 40px 24px; color: var(--text-light); font-size: 0.8rem; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
-    <header>
+    <div class="hero">
+        <div class="hero-badge">Hyperbaric Oxygen Therapy</div>
         <h1>BaricBoost.com</h1>
-        <p>Evidence-based coverage of hyperbaric oxygen therapy research, clinical applications, and emerging science.</p>
-    </header>
-    <main>
-        <h2>What Is Hyperbaric Oxygen Therapy?</h2>
-        <p>Hyperbaric oxygen therapy (HBOT) involves breathing pure oxygen in a pressurized chamber at 1.5 to 3.0 atmospheres absolute (ATA). The increased pressure allows oxygen to dissolve directly into blood plasma, cerebrospinal fluid, and tissues at concentrations far beyond what normal breathing achieves. This oxygen-rich environment accelerates healing, reduces inflammation, and promotes the growth of new blood vessels.</p>
-        <p>Originally developed for decompression sickness in divers, HBOT is now FDA-cleared for 14 conditions and actively researched for dozens more, from traumatic brain injury to Long COVID.</p>
+        <p>The most comprehensive resource for HBOT research, clinical guides, chamber comparisons, and evidence-based insights.</p>
+    </div>
 
-        <h2>FDA-Cleared Indications</h2>
-        <ul>
-            <li>Decompression sickness</li>
-            <li>Carbon monoxide poisoning</li>
-            <li>Gas gangrene and necrotizing soft tissue infections</li>
-            <li>Diabetic foot ulcers and chronic non-healing wounds</li>
-            <li>Radiation injury (delayed effects)</li>
-            <li>Thermal burns</li>
-            <li>Crush injuries and acute traumatic ischemias</li>
-            <li>Compromised skin grafts and flaps</li>
-            <li>Chronic refractory osteomyelitis</li>
-            <li>Air or gas embolism</li>
-            <li>Severe anemia (exceptional blood loss)</li>
-            <li>Intracranial abscess</li>
-            <li>Actinomycosis</li>
-            <li>Idiopathic sudden sensorineural hearing loss</li>
-        </ul>
+    <div class="container">
+        <div class="section">
+            <div class="section-title">HBOT Condition Guides</div>
+            <div class="section-sub">Research-backed guides on how hyperbaric oxygen therapy may help specific conditions.</div>
 
-        <h2>Emerging Research Areas</h2>
-
-        <h3>Traumatic Brain Injury and Concussion</h3>
-        <p>Multiple clinical trials have demonstrated improvements in cognitive function, PTSD symptoms, and quality of life in patients with mild traumatic brain injury treated with HBOT. Research published in journals including PLOS ONE and Neurology has shown measurable changes in brain metabolism and blood flow following treatment protocols of 40 to 60 sessions.</p>
-
-        <h3>Long COVID and Post-Viral Syndromes</h3>
-        <p>A randomized controlled trial published in Scientific Reports (2022) found that HBOT significantly improved cognitive function, fatigue, and pain symptoms in Long COVID patients. The proposed mechanism involves reducing neuroinflammation and restoring mitochondrial function in affected tissues.</p>
-
-        <h3>Neurological Conditions</h3>
-        <p>Ongoing research is examining HBOT's effects on stroke recovery, fibromyalgia, autism spectrum disorder, and age-related cognitive decline. A landmark 2020 study from Tel Aviv University demonstrated that HBOT could reverse biological aging markers at the cellular level, including telomere lengthening and senescent cell clearance.</p>
-
-        <h3>Sports Recovery and Performance</h3>
-        <p>Professional athletes increasingly use HBOT for accelerated recovery from muscle injuries, ligament damage, and post-surgical rehabilitation. The therapy's ability to reduce edema and promote tissue repair makes it a valuable tool in sports medicine protocols.</p>
-
-        <h2>How HBOT Works at the Cellular Level</h2>
-        <p>At pressures above 1 ATA, oxygen dissolves into plasma independent of hemoglobin, reaching areas with compromised blood flow. This triggers several biological cascades: upregulation of growth factors (VEGF, FGF), mobilization of stem cells from bone marrow, reduction of inflammatory cytokines, and enhanced white blood cell function. The cumulative effect across multiple sessions creates lasting improvements in tissue oxygenation and repair capacity.</p>
-
-        <div class="cta">
-            <p>Stay current with the latest HBOT research and clinical developments.</p>
-            <p><a href="https://baricboost.com">Visit BaricBoost.com</a></p>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>HBOT for Depression</h3>
+                    <p>Clinical evidence on how pressurized oxygen may improve mood disorders through neuroplasticity and reduced neuroinflammation.</p>
+                    <a href="https://baricboost.com/hyperbaric-chamber-for-depression/">Read the guide &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3>HBOT for Migraines</h3>
+                    <p>Research on HBOT's potential to reduce migraine frequency and severity through improved cerebral oxygenation.</p>
+                    <a href="https://baricboost.com/hyperbaric-chamber-for-migraines/">Read the guide &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3>HBOT for Diabetes</h3>
+                    <p>Evidence on diabetic wound healing, neuropathy management, and blood sugar regulation with hyperbaric therapy.</p>
+                    <a href="https://baricboost.com/hyperbaric-chamber-for-diabetes/">Read the guide &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3>HBOT for Dementia</h3>
+                    <p>Emerging research on cognitive improvement in dementia patients through enhanced cerebral blood flow and oxygen delivery.</p>
+                    <a href="https://baricboost.com/hyperbaric-chamber-for-dementia/">Read the guide &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3>HBOT for Fibromyalgia</h3>
+                    <p>Studies showing potential improvements in pain, fatigue, and cognitive function for fibromyalgia patients.</p>
+                    <a href="https://baricboost.com/hyperbaric-chamber-for-fibromyalgia/">Read the guide &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3>HBOT for Mental Health</h3>
+                    <p>How increased oxygen delivery to the brain may support treatment of anxiety, PTSD, and other mental health conditions.</p>
+                    <a href="https://baricboost.com/hyperbaric-chamber-for-mental-health/">Read the guide &rarr;</a>
+                </div>
+            </div>
         </div>
-    </main>
+
+        <div class="content-block">
+            <h2>What Is Hyperbaric Oxygen Therapy?</h2>
+            <p>Hyperbaric oxygen therapy (HBOT) involves breathing 100% oxygen inside a pressurized chamber at 1.5 to 3.0 atmospheres absolute. This dramatically increases oxygen concentration in blood plasma and tissues, triggering a cascade of healing responses: stem cell mobilization, growth factor upregulation, inflammatory cytokine reduction, and new blood vessel formation.</p>
+            <p>HBOT is FDA-cleared for 14 conditions including decompression sickness, carbon monoxide poisoning, diabetic wounds, and radiation injury. Research continues to expand its potential applications across neurology, autoimmune disease, post-viral syndromes, and sports medicine.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Practical Guides</h2>
+            <p>Everything you need to know before, during, and after HBOT treatment:</p>
+            <div class="link-grid">
+                <div class="link-item"><a href="https://baricboost.com/what-to-expect-hbot/">What to Expect During HBOT</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hbot-sessions-guide/">How Many Sessions Do You Need?</a></div>
+                <div class="link-item"><a href="https://baricboost.com/how-long-do-hbot-effects-last/">How Long Do Effects Last?</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hbot-insurance-coverage/">Insurance Coverage Guide</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hbot-cpt-codes/">CPT Codes for HBOT</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hbot-alternatives/">HBOT Alternatives</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hbot-before-and-after/">Before and After Results</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hyperbaric-chamber-claustrophobia/">Managing Claustrophobia</a></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>More Condition Research</h2>
+            <div class="link-grid">
+                <div class="link-item"><a href="https://baricboost.com/hyperbaric-chamber-for-hair-growth/">HBOT for Hair Growth</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hyperbaric-chamber-for-fertility/">HBOT for Fertility</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hyperbaric-chamber-for-weight-loss/">HBOT for Weight Loss</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hbot-research/">All HBOT Research</a></div>
+                <div class="link-item"><a href="https://baricboost.com/hbot-research-news/">Research News</a></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>Chamber Types</h2>
+            <p>Not all hyperbaric chambers are the same. Understanding the differences helps you choose the right option for your needs and budget:</p>
+            <div class="link-grid">
+                <div class="link-item"><a href="https://baricboost.com/category/hard-shell-chambers/">Hard Shell Chambers</a></div>
+                <div class="link-item"><a href="https://baricboost.com/category/soft-shell-chambers/">Soft Shell Chambers</a></div>
+                <div class="link-item"><a href="https://baricboost.com/category/multiplace-chambers/">Multiplace Chambers</a></div>
+                <div class="link-item"><a href="https://baricboost.com/category/portable-home-chambers/">Portable Home Chambers</a></div>
+                <div class="link-item"><a href="https://baricboost.com/category/hbot-costs-buying/">Costs and Buying Guide</a></div>
+                <div class="link-item"><a href="https://baricboost.com/category/hbot-clinics-locations/">Find HBOT Clinics</a></div>
+            </div>
+        </div>
+
+        <div class="cta-banner">
+            <h2>Your Complete HBOT Resource</h2>
+            <p>Research, guides, and everything you need to make informed decisions about hyperbaric oxygen therapy.</p>
+            <a href="https://baricboost.com" class="cta-btn">Visit BaricBoost.com</a>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 BaricBoost.com. All rights reserved.</p>
+        <p>&copy; 2026 BaricBoost.com. All rights reserved. | <a href="https://baricboost.com/about/">About</a> | <a href="https://baricboost.com/contact/">Contact</a> | <a href="https://baricboost.com/privacy-policy/">Privacy</a></p>
     </footer>
 </body>
 </html>
